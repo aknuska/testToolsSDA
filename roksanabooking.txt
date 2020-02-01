@@ -1,0 +1,39 @@
+Title: Nieudane stworzenie rezerwacji z u¿yciem niepoprawnego formatu daty
+Preconditions: Serwer dostêpny
+Steps:
+1) Wyœlij zapytanie dla nieistniej¹cej rezerwacji:
+Metoda: POST
+URI: https://restful-booker.herokuapp.com/booking
+Header: Content-Type: application/json
+Body: 
+{
+    "firstname" : "<name>",
+    "lastname" : "<surname>",
+    "totalprice" : <price>,
+    "depositpaid" : <true/false>,
+    "bookingdates" : {
+        "checkin" : "<dd-mm-yyyy>",
+        "checkout" : "<dd-mm-yyyy>"
+    },
+    "additionalneeds" : "text"
+}'
+
+Expected:
+Rezerwacja nie zosta³a stworzona pomyœlnie
+StatusCode: 400
+
+{
+    "bookingid": 1,
+    "booking": {
+        "firstname": "<name>",
+        "lastname": "<surname>",
+        "totalprice": <price>,
+        "depositpaid": <true/false>,
+        "bookingdates": {
+            "checkin": "<yyyy-mm-dd>",
+            "checkout": "<yyyy-mm-dd>"
+        },
+        "additionalneeds": "text"
+    }
+}
+
