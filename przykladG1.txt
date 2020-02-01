@@ -1,0 +1,45 @@
+﻿Tytuł: wrong surname
+
+
+Preconditions:
+- server dostepny
+
+
+Kroki:
+1. Wyslij poprawne zapytanie dla nieistniejacej rezerwacji:
+
+Metoda: POST 
+URI: https://restful-booker.herokuapp.com/booking
+Heather: Content-Type: application/json  
+Body
+{
+    "firstname" : "Lukasz",
+    "lastname" : "09999",
+    "totalprice" : 100,
+    "depositpaid" : <true>,
+    "bookingdates" : {
+        "checkin" : "<2020-02-01>",
+        "checkout" : "<2020-02-02>"
+    },
+    "additionalneeds" : "dodatkowa poduszka"
+}
+
+Expected:
+Rezerwacja została stworzona pomyslnie:
+
+StatusCode: 401 Bad Request
+
+{
+    "bookingid": 1,
+    "booking": {
+        "firstname": "Lukasz",
+        "lastname": "09999",
+        "totalprice": 100,
+        "depositpaid": <true>,
+        "bookingdates": {
+            "checkin": "<2020-02-01>",
+            "checkout": "<2020-02-01>"
+        },
+        "additionalneeds": "dodatkowa poduszka"
+    }
+}
