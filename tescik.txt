@@ -1,0 +1,5 @@
+ID
+preconditions
+steps
+expected results
+postconditions
