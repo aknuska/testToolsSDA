@@ -1,0 +1,45 @@
+Tytu³: Tworzenie rezerwacji z przesz³¹ dat¹
+
+
+Preconditions:
+-serwer dostêpny
+
+
+Kroki:
+1.Wyœlij poprawne zapytanie dla nieistniej¹cej rezerwacji:
+
+Metoda: POST
+URI: https://restful-booker.herokuapp.com/booking
+Header: Content-Type: application/json
+Body
+{
+    "firstname" : "<name>",
+    "lastname" : "<surname>",
+    "totalprice" : <price>,
+    "depositpaid" : <true/false>,
+    "bookingdates" : {
+        "checkin" : "2019-02-01",
+        "checkout" : "2019-02-21"
+    },
+    "additionalneeds" : "text"
+}
+
+Expected:
+Rezerwacja nieudana
+
+StatusCode: 400 Bad Request
+
+{
+    "bookingid": 1,
+    "booking": {
+        "firstname": "<name>",
+        "lastname": "<surname>",
+        "totalprice": <price>,
+        "depositpaid": <true/false>,
+        "bookingdates": {
+            "checkin": "2019-02-01",
+            "checkout": "2019-02-21"
+        },
+        "additionalneeds": "text"
+    }
+}
