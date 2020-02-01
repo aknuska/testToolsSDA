@@ -1,0 +1,36 @@
+Tytuł: Nie podanie danych w polu  Imię
+
+Preconditions:
+- serwer dostępny
+
+Kroki:
+1. Wyślij poprawne zapytanie dla nieistniejącej rezerwacji:
+Metoda POST 
+URI: https://restful-booker.herokuapp.com/booking
+NAGŁÓWEK 'Content-Type: application/json' 
+BODY:
+    git 
+    "lastname" : "<surname>",
+    "totalprice" : <price>,
+    "depositpaid" : <true/false>,
+    "bookingdates" : {
+        "checkin" : "yyyy-mm-dd",
+        "checkout" : "yyyy-mm-dd"
+    },
+    "additionalneeds" : "text"
+Expected:
+Rezerwacja zostałą stworzona pomyślnie
+Status Code: 
+    "bookingid": 1,
+    "booking": {
+        
+        "lastname": "<surname>",
+        "totalprice": <price>,
+        "depositpaid": <trude/false>,
+        "bookingdates": {
+            "checkin": "yyyy-mm-dd",
+            "checkout": "yyyy-mm-dd"
+        },
+        "additionalneeds": "text"
+    }
+}
