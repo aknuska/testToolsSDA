@@ -1,0 +1,26 @@
+Tytuł: Próba stworzenia rezerwacji w latach 2030-2032
+Pre:
+	- serwer dostępny
+
+Steps:
+
+1. Wyślij  zapytanie dla nieistniejącego użytkownika
+
+Metoda: POST
+URI: https://restful-booker.herokuapp.com/booking
+HEADER:  Content-Type: application/json
+BODY:
+{
+    "firstname" : "Kulfon",
+    "lastname" : "Złamany",
+    "totalprice" : ,
+    "depositpaid" : ,
+    "bookingdates" : {
+        "checkin" : "2030-02-01",
+        "checkout" : "2032-04-01"
+    },
+    "additionalneeds" : "Panienki"
+}
+
+Oczekiwane rezultaty:
+ - rezerwacja pomyśnie utworzona (Server_Response = 200)
