@@ -1,0 +1,36 @@
+Tytuł: stworzenie rezerwacji z użyciem znaków specjalnych w polu name 
+1 preconditions
+-serwer dostępny
+2 kroki:
+a) Użycie średnika i wykrzyknia w polu name
+metoda POST
+URI:  https://restful-booker.herokuapp.com/booking \
+-Heather: 'Content-Type: application/json' \
+Body:
+{
+    "bookingid": 1,
+    "booking": {
+        "firstname": ";!",
+        "lastname": "Brown",
+        "totalprice": 111,
+        "depositpaid": true,
+        "bookingdates": {
+            "checkin": "2018-01-01",
+            "checkout": "2019-01-01"
+        },
+        "additionalneeds": "Breakfast"
+    }
+3 Expected results: 
+HTTP/1.1 400 bad request
+
+{
+    "firstname" : ";!",
+    "lastname" : "Brown",
+    "totalprice" : 111,
+    "depositpaid" : false,
+    "bookingdates" : {
+        "checkin" : "2018-01-01",
+        "checkout" : "2019-01-01"
+    },
+    "additionalneeds" : "Breakfast"
+}
